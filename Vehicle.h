@@ -1,9 +1,9 @@
 #ifndef _VEHICLE
 #define _VEHICLE
 
-#include "Object.h"
+#include "Entity.h"
 
-class Vehicle : public Object
+class Vehicle : public Entity
 {
 public:
 	/*virtual void move(int x, int y)
@@ -16,51 +16,51 @@ public:
 class Car : public Vehicle
 {
 private:
-	static Limits* carLmtRight;
-	static Limits* carLmtLeft;
+	static Sprite* carSprtRight;
+	static Sprite* carSprtLeft;
 public:
 	Car(int x, int y);
 
 	~Car();
 
-	Limits getLimits(bool isRight = 0) const override
+	Sprite getSprite(bool isRight = 0) const override
 	{
-		return (isRight) ? *carLmtRight : *carLmtLeft;
+		return (isRight)? *carSprtRight : *carSprtLeft;
 	}
-	SHORT getLimitofHeight() const override
+	SHORT getSpriteHeight() const override
 	{
-		return carLmtRight->getHeight();
+		return carSprtRight->getHeight();
 	}
 
-	SHORT getLimitofWidth() const override
+	SHORT getSpriteWidth() const override
 	{
-		return carLmtRight->getWidth();
+		return carSprtRight->getWidth();
 	}
 };
 
 class Truck : public Vehicle
 {
 private:
-	static Limits* truckLmtRight;
-	static Limits* truckLmtLeft;
+	static Sprite* truckSprtRight;
+	static Sprite* truckSprtLeft;
 
 public:
 	Truck(int x, int y);
 
 	~Truck();
 
-	Limits getLimits(bool isRight = 0) const override
+	Sprite getSprite(bool isRight = 0) const override
 	{
-		return (isRight) ? *truckLmtRight : *truckLmtLeft;
+		return (isRight) ? *truckSprtRight : *truckSprtLeft;
 	}
-	SHORT  getLimitofHeight() const override
+	SHORT getSpriteHeight() const override
 	{
-		return truckLmtRight->getHeight();
+		return truckSprtRight->getHeight();
 	}
 
-	SHORT  getLimitofWidth()  const override
+	SHORT getSpriteWidth() const override
 	{
-		return truckLmtRight->getWidth();
+		return truckSprtRight->getWidth();
 	}
 };
 

@@ -1,10 +1,9 @@
 #ifndef _ANIMAL
 #define _ANIMAL
-//#include "Object.h"
-#include "Limits.h"
-#include "Object.h"
+#include "Entity.h"
+#include "Sprite.h"
 
-class Animal : public Object
+class Animal : public Entity
 {
 public:
 	/*virtual void move(int x, int y)
@@ -17,51 +16,51 @@ public:
 class Bird : public Animal
 {
 private:
-	static Limits* birdLmtRight;
-	static Limits* birdLmtLeft;
+	static Sprite* birdSprtRight;
+	static Sprite* birdSprtLeft;
 public:
 	Bird(int x, int y);
 
 	~Bird();
 
-	Limits getLimits(bool isRight = 0) const override
+	Sprite getSprite(bool isRight = 0) const override
 	{
-		return (isRight) ? *birdLmtRight : *birdLmtLeft;
+		return (isRight) ? *birdSprtRight : *birdSprtLeft;
 	}
 
-	SHORT getLimitofHeight()const override
+	SHORT getSpriteHeight() const override
 	{
-		return birdLmtRight->getHeight();
+		return birdSprtRight->getHeight();
 	}
 
-	SHORT getLimitofWidth() const override
+	SHORT getSpriteWidth() const override
 	{
-		return birdLmtRight->getWidth();
+		return birdSprtRight->getWidth();
 	}
 };
 
 class Dinosaur : public Animal
 {
 private:
-	static Limits* dinoLmtRight;
-	static Limits* dinoLmtLeft;
+	static Sprite* dinoSprtRight;
+	static Sprite* dinoSprtLeft;
 public:
 	Dinosaur(int x, int y);
 
 	~Dinosaur();
 
-	Limits getLimits(bool isRight = 0) const override
+	Sprite getSprite(bool isRight = 0) const override
 	{
-		return (isRight) ? *dinoLmtRight : *dinoLmtLeft;
+		return (isRight) ? *dinoSprtRight : *dinoSprtLeft;
 	}
-	SHORT getLimitofHeight()const override
+	SHORT getSpriteHeight() const override
 	{
-		return dinoLmtRight->getHeight();
+		return dinoSprtRight->getHeight();
 	}
 
-	SHORT getLimitofWidth() const override
+	SHORT getSpriteWidth() const override
 	{
-		return dinoLmtRight->getWidth();
+		return dinoSprtRight->getWidth();
 	}
 };
 #endif // _ANIMAL
